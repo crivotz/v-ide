@@ -39,7 +39,6 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'sjl/gundo.vim'
@@ -73,9 +72,11 @@ Plug 'takac/vim-hardtime'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'alok/notational-fzf-vim'
+Plug 'valloric/MatchTagAlways'
 call plug#end()
 
 " =============================================================================
@@ -464,11 +465,6 @@ let g:devdocs_filetype_map = {
       \   'ruby': 'rails',
       \   'javascript.js': 'jquery',
       \ }
-
-" =============================================================================
-" MatchTagAlways
-" =============================================================================
-let g:mta_use_matchparen_group = 1
 
 " =============================================================================
 " Vim-polyglot
