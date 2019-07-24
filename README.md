@@ -43,8 +43,7 @@ Thanks to the developers of these plugins/color schemes
 * [Scss_syntax](https://github.com/cakebaker/scss-syntax.vim): Vim syntax file for scss
 * [Tagbar](http://majutsushi.github.io/tagbar/): Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure
 * [Searchcomplete](http://www.vim.org/scripts/script.php?script_id=474): Tab completion of words inside of a search ('/')
-* [vim-easymotion](https://github.com/Lokaltog/vim-easymotion): Vim motions on speed!
-* [gundo](https://github.com/sjl/gundo.vim/): Graph your Vim undo tree in style
+* [vim-easymotion](https://github.com/easymotion/vim-easymotion): Vim motions on speed! 
 * [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags): A vim plugin that manages your tag files  
 * [emmet-vim](https://github.com/mattn/emmet-vim.git): [emmet](http://emmet.io) for vim
 * [vim-signature](https://github.com/kshenoy/vim-signature.git): Plugin to toggle, display and navigate marks
@@ -52,6 +51,7 @@ Thanks to the developers of these plugins/color schemes
 * [vim-rooter](https://github.com/airblade/vim-rooter): Change Vim wd to project root (identified by presence of known directory or file)
 * [vimux](https://github.com/benmills/vimux): vim plugin to interact with tmux
 * [fzf.vim](https://github.com/junegunn/fzf.vim): fzf loves vim
+* [vim-peekaboo](https://github.com/junegunn/vim-peekaboo): will show you the contents of the registers on the sidebar  
 * [vim-smooth-scroll](https://github.com/terryma/vim-smooth-scroll): Make scrolling in Vim more pleasant
 * [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
 * [vim-searchindex](https://github.com/google/vim-searchindex): display number of search matches & index of a current match
@@ -65,7 +65,7 @@ Thanks to the developers of these plugins/color schemes
 * [NrrwRgn](https://github.com/chrisbra/NrrwRgn): A Narrow Region Plugin for Vim
 * [Ctrlsf](https://github.com/dyng/ctrlsf.vim): An ack.vim alternatives mimics Ctrl-Shift-F on Sublime Text 2  
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim  
-* [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe): A code-completion engine for Vim  
+* [vim-mucomplete](https://github.com/lifepillar/vim-mucomplete): Chained completion taht works the way you want!  
 * [Jedi-vim](https://github.com/davidhalter/jedi-vim): Using the jedi autocompletion library for VIM  
 * [Ultisnips](https://github.com/SirVer/ultinips): UltiSnips - The ultimate snippet solution for Vim.  
 * [Vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets.  

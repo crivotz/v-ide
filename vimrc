@@ -40,19 +40,18 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'majutsushi/tagbar'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'sjl/gundo.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kshenoy/vim-signature'
 Plug 'yggdroot/indentline'
 Plug 'airblade/vim-rooter'
 Plug 'benmills/vimux'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf.vim' | Plug 'fszymanski/fzf-quickfix'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'tweekmonster/startuptime.vim'
 Plug 'google/vim-searchindex'
-Plug 'francoiscabrol/ranger.vim'
+Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'w0rp/ale'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -61,10 +60,10 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'prettier/vim-prettier'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+Plug 'lifepillar/vim-mucomplete'
 Plug 'davidhalter/jedi-vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
@@ -74,9 +73,9 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'alok/notational-fzf-vim'
 Plug 'valloric/MatchTagAlways'
+Plug 'tweekmonster/startuptime.vim'
 call plug#end()
 
 " =============================================================================
@@ -373,15 +372,27 @@ let g:airline#extensions#tmuxline#enabled = 0
 " =============================================================================
 " Ultisnips
 " =============================================================================
-" let g:UltiSnipsExpandTrigger = "<f6>"        " Do not use <tab>
-" let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
+let g:UltiSnipsExpandTrigger = "<f6>"        " Do not use <tab>
+let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
+
+" =============================================================================
+" VIM-MUCOMPLETE
+" =============================================================================
+set completeopt+=menuone,preview,noselect
+set shortmess+=c
+set belloff+=ctrlg
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['ulti', 'omni', 'path', 'keyn', 'keyp', 'file']
+inoremap <silent> <expr> <Plug>MyCr mucomplete#ultisnips#expand_snippet("\<cr>")
+imap <cr> <Plug>MyCr
 
 " =============================================================================
 " YouCompleteMe
 " =============================================================================
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-set completeopt=longest,menu
+" let g:ycm_seed_identifiers_with_syntax = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" set completeopt=longest,menu
 
 " =============================================================================
 " Jedi-vim
@@ -487,7 +498,6 @@ let g:gutentags_add_default_project_roots = 0
 "<F1> open help
 nnoremap <F3> :set invnumber<CR>
 map <F4> :set list! list? <CR>
-nnoremap <F5> :GundoToggle<CR>
 nmap <F7> :Ranger<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
@@ -507,6 +517,12 @@ nmap <Leader>xx :VimuxPromptCommand<CR>
 nmap <Leader>% :MtaJumpToOtherTag<CR>
 nmap <silent> <Leader>sp :set spell!<CR>
 nmap K <Plug>(devdocs-under-cursor)
+nmap f <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 nmap <Leader><< <Plug>(Prettier)
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordExec
