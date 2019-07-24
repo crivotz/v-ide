@@ -54,7 +54,7 @@ Thanks to the developers of these plugins/color schemes
 * [vim-peekaboo](https://github.com/junegunn/vim-peekaboo): will show you the contents of the registers on the sidebar  
 * [vim-smooth-scroll](https://github.com/terryma/vim-smooth-scroll): Make scrolling in Vim more pleasant
 * [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
-* [vim-searchindex](https://github.com/google/vim-searchindex): display number of search matches & index of a current match
+* [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.
 * [Ale](https://github.com/w0rp/ale): Asynchronous Lint Engine
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim

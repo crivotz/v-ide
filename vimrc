@@ -50,7 +50,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/fzf.vim' | Plug 'fszymanski/fzf-quickfix'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'google/vim-searchindex'
+Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'w0rp/ale'
 Plug 'rhysd/devdocs.vim'
@@ -153,7 +153,7 @@ set showcmd                               " Show command
 set showmatch                             " Show close bracket
 set incsearch                             " turn on incremental search
 set ignorecase                            " no case sensitive search patterns
-set hlsearch                              " Highlight search results 
+set hlsearch                              " Highlight search results
 set smartcase                             " Search with caps - override ignorecase
 set esckeys                               " cursor keys in I mode
 set autoindent                            " Copy indent after <CR>  o O
@@ -482,7 +482,12 @@ let g:devdocs_filetype_map = {
 " =============================================================================
 let g:polyglot_disabled = ['markdown']
 
+" ============================================================================
+" Vim-easymotion
 " =============================================================================
+let g:EasyMotion_smartcase = 1
+
+" ============================================================================
 " Vim-gutentags
 " =============================================================================
 set tags+=tags,.git/tags
@@ -517,12 +522,15 @@ nmap <Leader>xx :VimuxPromptCommand<CR>
 nmap <Leader>% :MtaJumpToOtherTag<CR>
 nmap <silent> <Leader>sp :set spell!<CR>
 nmap K <Plug>(devdocs-under-cursor)
+map <Leader> <Plug>(easymotion-prefix)
 nmap f <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+map  n <Plug>(anzu-n-with-echo)
+map  N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Leader><< <Plug>(Prettier)
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordExec
