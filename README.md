@@ -21,6 +21,7 @@ Thanks to the developers of these plugins/color schemes
 **ACTIVE PLUGINS**
 
 * [vim-plug](https://github.com/junegunn/vim-plug): One ring to rule them all
+* [vim-sensible](https://github.com/tpope/vim-sensible): Defaults everyone can agree on
 * [Rails](https://github.com/tpope/vim-rails): Ruby on Rails power tools
 * [Fugitive](https://github.com/tpope/vim-fugitive): Git wrapper
 * [Abolish](https://github.com/tpope/vim-abolish): easily search for, substitute, and abbreviate multiple variants of a word
@@ -52,7 +53,6 @@ Thanks to the developers of these plugins/color schemes
 * [vimux](https://github.com/benmills/vimux): vim plugin to interact with tmux
 * [fzf.vim](https://github.com/junegunn/fzf.vim): fzf loves vim
 * [vim-peekaboo](https://github.com/junegunn/vim-peekaboo): will show you the contents of the registers on the sidebar  
-* [vim-smooth-scroll](https://github.com/terryma/vim-smooth-scroll): Make scrolling in Vim more pleasant
 * [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
 * [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.

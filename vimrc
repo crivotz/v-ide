@@ -19,6 +19,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
@@ -49,7 +50,6 @@ Plug 'benmills/vimux'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/fzf.vim' | Plug 'fszymanski/fzf-quickfix'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'w0rp/ale'
@@ -117,23 +117,15 @@ endif
 " =============================================================================
 " SETTINGS
 " =============================================================================
-filetype on                               " Enable filetype detection
-filetype indent on                        " Enable filetype-specific indenting
-filetype plugin on                        " Enable filetype-specific plugins
-syntax on									                " Syntax highlighting
 set fillchars+=vert:.                     " Change vertical split character 
 set noshowmode                            " Don't dispay mode in command line
-set shell=/bin/zsh                        " Shell
 set guioptions=aAce                       " GUI options
-set laststatus=2                          " Show the statusline
 set nonumber                              " Row number
-set nrformats-=octal                      " treat all numbers as decimals
 set hidden                                " allow hidden buffer
 set so=10                                 " Row after cursor
 set splitright                            " Open vertical splits to the right
 set splitbelow                            " Open horizontal splits to the bottom
 set wrapscan                              " Start search from the beginning
-set encoding=utf-8                        " set the character encoding
 set fileformat=unix                       " set fileformat
 set nobackup                              " No backups
 set nowritebackup                         " No backups
@@ -151,38 +143,23 @@ set foldnestmax=10
 set nofoldenable                          " Open all folds by default
 set showcmd                               " Show command 
 set showmatch                             " Show close bracket
-set incsearch                             " turn on incremental search
 set ignorecase                            " no case sensitive search patterns
 set hlsearch                              " Highlight search results
 set smartcase                             " Search with caps - override ignorecase
 set esckeys                               " cursor keys in I mode
-set autoindent                            " Copy indent after <CR>  o O
 set undolevels=1000 						          " n of changes that can be undone
-set history=1000  							          " history
 set noerrorbells                          " do not use errorbells
 set nojoinspaces                          " two spaces after a period on join
 set title                                 " show window title
 set spelllang=it                          " set default spell to it
 set softtabstop=2
 set expandtab                               
-set smarttab                                
-set ttimeout
-set ttimeoutlen=100
-set ruler
-set wildmenu
-set autoread
-set backspace=indent,eol,start whichwrap+=<,>,[,] " normal backspace
 
 " jump to the last known cursor position
 autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
       \ endif
-
-" No viminfo
-if !empty(&viminfo)
-  set viminfo^=!
-endif
 
 " Set cursor position
 au WinLeave * set nocursorcolumn
@@ -340,8 +317,9 @@ let g:airline_left_sep = ''
 " VIM-HEXOKINASE
 " =============================================================================
 let g:Hexokinase_ftAutoload = ['*']
-let g:Hexokinase_highlighters = ['background']
+let g:Hexokinase_highlighters = ['sign_column']
 let g:Hexokinase_refreshEvents = ['BufWritePost']
+let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba']
 
 " =============================================================================
 " VIM-HARDTIME
@@ -462,14 +440,6 @@ let g:rooter_resolve_links = 1
 let g:rooter_patterns = ['.git', '.git/']
 
 " =============================================================================
-" VIM-SMOOTH-SCROLL
-" =============================================================================
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-" =============================================================================
 " DEVDOCS
 " =============================================================================
 let g:devdocs_filetype_map = {
@@ -490,7 +460,7 @@ let g:EasyMotion_smartcase = 1
 " ============================================================================
 " Vim-gutentags
 " =============================================================================
-set tags+=tags,.git/tags
+" set tags+=tags,.git/tags
 let g:gutentags_enabled = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
