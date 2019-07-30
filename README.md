@@ -39,11 +39,9 @@ Thanks to the developers of these plugins/color schemes
 * [Vim-Airline](https://github.com/bling/vim-airline): lean & mean status/tabline for vim that's light as air
 * [Vim-Airline-theme](https://github.com/vim-airline/vim-airline-themes): A collection of themes for vim-airline
 * [Tmuxline](https://github.com/edkolev/tmuxline.vim): Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
-* [pear-tree](https://github.com/tmsvg/pear-tree): A Vim auto-pair plugin that supports multi-character pairs, intelligent matching, and more  
 * [vim-signify](https://github.com/mhinz/vim-signify): Show a diff using Vim its sign column  .
 * [Scss_syntax](https://github.com/cakebaker/scss-syntax.vim): Vim syntax file for scss
 * [Tagbar](http://majutsushi.github.io/tagbar/): Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure
-* [Searchcomplete](http://www.vim.org/scripts/script.php?script_id=474): Tab completion of words inside of a search ('/')
 * [vim-easymotion](https://github.com/easymotion/vim-easymotion): Vim motions on speed! 
 * [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags): A vim plugin that manages your tag files  
 * [emmet-vim](https://github.com/mattn/emmet-vim.git): [emmet](http://emmet.io) for vim
@@ -56,7 +54,7 @@ Thanks to the developers of these plugins/color schemes
 * [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
 * [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.
-* [Ale](https://github.com/w0rp/ale): Asynchronous Lint Engine
+* [Ale](https://github.com/dense-analysis/ale): Asynchronous Lint Engine
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons.git): Adds file type glyphs/icons to popular Vim plugins
 * [vim-tmux-focus](https://github.com/tmux-plugins/vim-tmux-focus-events.git): Make terminal vim and tmux work better together
@@ -65,7 +63,7 @@ Thanks to the developers of these plugins/color schemes
 * [NrrwRgn](https://github.com/chrisbra/NrrwRgn): A Narrow Region Plugin for Vim
 * [Ctrlsf](https://github.com/dyng/ctrlsf.vim): An ack.vim alternatives mimics Ctrl-Shift-F on Sublime Text 2  
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim  
-* [vim-mucomplete](https://github.com/lifepillar/vim-mucomplete): Chained completion taht works the way you want!  
+* [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe): A code-completion engine for Vim  
 * [Jedi-vim](https://github.com/davidhalter/jedi-vim): Using the jedi autocompletion library for VIM  
 * [Ultisnips](https://github.com/SirVer/ultinips): UltiSnips - The ultimate snippet solution for Vim.  
 * [Vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets.  

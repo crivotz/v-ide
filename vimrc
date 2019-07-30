@@ -39,7 +39,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'tmsvg/pear-tree'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'ludovicchabant/vim-gutentags'
@@ -60,8 +59,7 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'prettier/vim-prettier'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
-" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-Plug 'lifepillar/vim-mucomplete'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 Plug 'davidhalter/jedi-vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase'
@@ -188,23 +186,6 @@ hi! SignifySignChange guibg=NONE
 " execute "set colorcolumn=" . join(range(81,335), ',') " Highlight from column 81
 " set cursorcolumn " highlight the column the cursor is on
 " set cursorline " highlight the line the cursor is on
-
-" =============================================================================
-" WINDOWS BEHAVIOR
-" =============================================================================
-" backspace in Visual mode deletes selection
-vnoremap <BS> d
-" CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
-" CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
-" CTRL-V and SHIFT-Insert are Paste
-map <C-V>		"+gP
-map <S-Insert>		"+gP
-cmap <C-V>		<C-R>+
-cmap <S-Insert>		<C-R>+
 
 " =============================================================================
 " FZF
@@ -346,31 +327,20 @@ let g:airline#extensions#tmuxline#enabled = 0
 " let g:ale_lint_on_enter = 0
 " let g:ale_set_loclist = 0
 " let g:ale_set_quickfix = 1
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
 
 " =============================================================================
 " Ultisnips
 " =============================================================================
-let g:UltiSnipsExpandTrigger = "<f6>"        " Do not use <tab>
-let g:UltiSnipsJumpForwardTrigger = "<c-b>"  " Do not use <c-j>
-
-" =============================================================================
-" VIM-MUCOMPLETE
-" =============================================================================
-set completeopt+=menuone,preview,noselect
-set shortmess+=c
-set belloff+=ctrlg
-let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default = ['ulti', 'omni', 'path', 'keyn', 'keyp', 'file']
-inoremap <silent> <expr> <Plug>MyCr mucomplete#ultisnips#expand_snippet("\<cr>")
-imap <cr> <Plug>MyCr
+let g:UltiSnipsExpandTrigger = "<c-j>"        " Do not use <tab>
 
 " =============================================================================
 " YouCompleteMe
 " =============================================================================
-" let g:ycm_seed_identifiers_with_syntax = 1
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" set completeopt=longest,menu
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+set completeopt=longest,menu
 
 " =============================================================================
 " Jedi-vim
@@ -471,8 +441,9 @@ let g:gutentags_add_default_project_roots = 0
 
 " =============================================================================
 "<F1> open help
-nnoremap <F3> :set invnumber<CR>
-map <F4> :set list! list? <CR>
+nnoremap <F2> :set invnumber<CR>
+nnoremap <F3> :set number! relativenumber!<CR>
+map <F5> :set list! list? <CR>
 nmap <F7> :Ranger<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
