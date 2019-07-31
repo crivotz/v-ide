@@ -100,10 +100,10 @@ if has('unix')
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     " Do Mac stuff here
-    set guifont=Knack\ Nerd\ Font\:h11
+    set guifont=FuraCode\ Nerd\ Font\ Mono\:h11
     set rtp+=/usr/local/opt/fzf
   else
-    set guifont=Knack\ Nerd\ Font\ 8
+    set guifont=FuraCode\ Nerd\ Font\ Mono\ 8
     set rtp+=~/.fzf
   endif
 elseif has('win32') || has('win64')
@@ -237,11 +237,11 @@ let g:startify_custom_header = [
       \'     \__/           |__| |_______/ |_______|',
       \ ]
 let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': [" \ue62e Sessions"]       },
-      \ { 'type': 'bookmarks', 'header': [" \uf5c2 Bookmarks"]      },
-      \ { 'type': 'files',     'header': [" \ufa1eMRU Files"]            },
-      \ { 'type': 'dir',       'header': [" \ufa1eMRU Files in ". getcwd()] },
-      \ { 'type': 'commands',  'header': [" \uf085 Commands"]       },
+      \ { 'type': 'sessions',  'header': ["  Sessions"]       },
+      \ { 'type': 'bookmarks', 'header': ["  Bookmarks"]      },
+      \ { 'type': 'files',     'header': ["  MRU Files"]            },
+      \ { 'type': 'dir',       'header': ["  MRU Files in ". getcwd()] },
+      \ { 'type': 'commands',  'header': ["  Commands"]       },
       \ ]
 
 function! StartifyEntryFormat()
