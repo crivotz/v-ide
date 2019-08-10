@@ -70,13 +70,14 @@ Thanks to the developers of these plugins/color schemes
 * [vim-hexokinase](https://github.com/RRethy/vim-hexokinase): Plugin for displaying the colours in the file.  
 * [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim.  
 * [vim-node](https://github.com/moll/vim-node): Tools and environment to make Vim superb for developing with Node.js. Like Rails.vim for Node  
-* [vim-hardtime](https://github.com/takac/vim-hardtime): Plugin to help you stop repeating the basic movement keys  
 * [gist-vim](https://github.com/mattn/gist-vim): vimscript for gist  
 * [webapi-vim](https://github.com/mattn/webapi-vim): vim interface to Web API  
 * [vim-obsession](https://github.com/tpope/vim-obsession): continuosly update session files  
 * [vim-startify](https://github.com/mhinx/vim-startify): The fancy start screen for Vim  
 * [bclose](https://github.com/rbgrouleff/bclose.vim): The fancy start screen for Vim  
 * [notational-fzf-vim](https://github.com/alok/notation-fzf-vim): Notational velocity for vim  
+* [goyo](https://github.com/junegunn/goyo.vim): Distraction-free writing in Vim  
+* [limelight](https://github.com/alok/limelight.vim): All the world's indeed a stage and we are merely players  
 
 **COLOR SCHEMES**
 

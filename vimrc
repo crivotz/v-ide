@@ -47,7 +47,8 @@ Plug 'yggdroot/indentline'
 Plug 'airblade/vim-rooter'
 Plug 'benmills/vimux'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/fzf.vim' | Plug 'fszymanski/fzf-quickfix'
+Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
+Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
@@ -65,7 +66,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
-Plug 'takac/vim-hardtime'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/emmet-vim'
@@ -303,10 +303,10 @@ let g:Hexokinase_refreshEvents = ['BufWritePost']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba']
 
 " =============================================================================
-" VIM-HARDTIME
+" GOYO & LIMELIGHT
 " =============================================================================
-let g:hardtime_default_on = 1
-let g:hardtime_ignore_quickfix = 1
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " =============================================================================
 " TMUXLINE
@@ -437,12 +437,14 @@ let g:gutentags_generate_on_write = 1
 let g:gutentags_resolve_symlinks = 1
 let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_project_root = ['.git']
+let g:gutentags_ctags_extra_args = ['--fields=+l']
 let g:gutentags_add_default_project_roots = 0
 
 " =============================================================================
 "<F1> open help
 nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
+nmap <F4> :Goyo<CR>
 map <F5> :set list! list? <CR>
 nmap <F7> :Ranger<CR>
 nmap <F8> :TagbarToggle<CR>
