@@ -3,3 +3,5 @@ Session.vim
 bundle/*
 session/*
 !*.keep
+plug.vim
+plug.vim.old

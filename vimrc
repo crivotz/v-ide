@@ -445,7 +445,7 @@ let g:gutentags_add_default_project_roots = 0
 nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F4> :Goyo<CR>
-map <F5> :set list! list? <CR>
+nmap <F5> :set list! list?<CR>
 nmap <F7> :Ranger<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
