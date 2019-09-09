@@ -78,6 +78,8 @@ Thanks to the developers of these plugins/color schemes
 * [notational-fzf-vim](https://github.com/alok/notation-fzf-vim): Notational velocity for vim  
 * [goyo](https://github.com/junegunn/goyo.vim): Distraction-free writing in Vim  
 * [limelight](https://github.com/alok/limelight.vim): All the world's indeed a stage and we are merely players  
+* [golden-ratio](https://github.com/roman/golden-ratio): Automatic resizing of Vim windows to the golden ratio  
+* [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
 
 **COLOR SCHEMES**
 
