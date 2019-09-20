@@ -54,18 +54,14 @@ Thanks to the developers of these plugins/color schemes
 * [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
 * [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.
-* [Ale](https://github.com/dense-analysis/ale): Asynchronous Lint Engine
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons.git): Adds file type glyphs/icons to popular Vim plugins
 * [vim-tmux-focus](https://github.com/tmux-plugins/vim-tmux-focus-events.git): Make terminal vim and tmux work better together
 * [vim-twiggy](https://github.com/sodapopcan/vim-twiggy.git): Git branch management for Vim
-* [vim-prettier](https://github.com/prettier/vim-prettier): A Vim plugin for Prettier
 * [NrrwRgn](https://github.com/chrisbra/NrrwRgn): A Narrow Region Plugin for Vim
 * [Ctrlsf](https://github.com/dyng/ctrlsf.vim): An ack.vim alternatives mimics Ctrl-Shift-F on Sublime Text 2  
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim  
-* [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe): A code-completion engine for Vim  
-* [Jedi-vim](https://github.com/davidhalter/jedi-vim): Using the jedi autocompletion library for VIM  
-* [Ultisnips](https://github.com/SirVer/ultinips): UltiSnips - The ultimate snippet solution for Vim.  
+* [coc.nvim](https://github.com/neoclide/coc.nvim): Intellisense engine for vim8 & neovim, full language server protocol support as VSCode  
 * [Vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets.  
 * [vim-hexokinase](https://github.com/RRethy/vim-hexokinase): Plugin for displaying the colours in the file.  
 * [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim.  
@@ -80,6 +76,7 @@ Thanks to the developers of these plugins/color schemes
 * [limelight](https://github.com/alok/limelight.vim): All the world's indeed a stage and we are merely players  
 * [golden-ratio](https://github.com/roman/golden-ratio): Automatic resizing of Vim windows to the golden ratio  
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
+* [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
 
 **COLOR SCHEMES**
 

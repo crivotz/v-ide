@@ -54,17 +54,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'sodapopcan/vim-twiggy'
-Plug 'prettier/vim-prettier'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
-Plug 'davidhalter/jedi-vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase'
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
@@ -154,6 +153,8 @@ set title                                 " show window title
 set spelllang=it                          " set default spell to it
 set softtabstop=2
 set expandtab                               
+set signcolumn=yes
+set shortmess+=c
 
 " jump to the last known cursor position
 autocmd BufReadPost *
@@ -282,6 +283,35 @@ let g:SignatureMarkTextHLDynamic = 1
 let g:SignatureMarkerTextHLDynamic = 1
 
 " =============================================================================
+" ALE
+" =============================================================================
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+" let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '⚠'
+
+" =============================================================================
+" COC
+" =============================================================================
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:coc_global_extensions = ['coc-solargraph', 'coc-highlight', 'coc-python', 'coc-yaml', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-tsserver', 'coc-prettier']
+autocmd CursorHold * silent call CocActionAsync('highlight')
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" =============================================================================
 " VIM-AIRLINE
 " =============================================================================
 let g:airline_powerline_fonts = 1
@@ -289,7 +319,7 @@ let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_section_y = airline#section#create_right(['ffenc','','%{rvm#statusline()}'])
 let g:airline_theme = 'base16'
-let g:airline#extensions#ale#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#obsession#enabled = 1
 let g:airline_right_alt_sep = ''
 let g:airline_right_sep = ''
@@ -321,33 +351,6 @@ let g:tmuxline_separators = {
       \ 'space' : ' '}
 let g:airline#extensions#tmuxline#enabled = 0
 " let g:tmuxline_powerline_separators = 0
-
-" =============================================================================
-" ALE
-" =============================================================================
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_enter = 0
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-
-" =============================================================================
-" Ultisnips
-" =============================================================================
-let g:UltiSnipsExpandTrigger = "<c-j>"        " Do not use <tab>
-
-" =============================================================================
-" YouCompleteMe
-" =============================================================================
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-set completeopt=longest,menu
-
-" =============================================================================
-" Jedi-vim
-" =============================================================================
-let g:jedi#popup_on_dot = 1
 
 " =============================================================================
 " FILETYPE
@@ -476,7 +479,6 @@ map  n <Plug>(anzu-n-with-echo)
 map  N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
-nmap <Leader><< <Plug>(Prettier)
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordExec
 nmap     <C-F>n <Plug>CtrlSFCwordExec
