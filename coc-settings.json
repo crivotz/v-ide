@@ -3,5 +3,5 @@
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
   "solargraph.hover": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown"]
 }

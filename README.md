@@ -36,8 +36,6 @@ Thanks to the developers of these plugins/color schemes
 * [vim-dadbod](https://github.com/tpope/vim-dadbod): Modern database interface for Vim
 * [Vim-eunuch](https://github.com/tpope/vim-eunuch): Helpers for UNIX.  
 * [vim-jdaddy](https://github.com/tpope/vim-jdaddy): JSON manipulation and pretty printing.  
-* [Vim-Airline](https://github.com/bling/vim-airline): lean & mean status/tabline for vim that's light as air
-* [Vim-Airline-theme](https://github.com/vim-airline/vim-airline-themes): A collection of themes for vim-airline
 * [Tmuxline](https://github.com/edkolev/tmuxline.vim): Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
 * [vim-signify](https://github.com/mhinz/vim-signify): Show a diff using Vim its sign column  .
 * [Scss_syntax](https://github.com/cakebaker/scss-syntax.vim): Vim syntax file for scss
@@ -77,6 +75,8 @@ Thanks to the developers of these plugins/color schemes
 * [golden-ratio](https://github.com/roman/golden-ratio): Automatic resizing of Vim windows to the golden ratio  
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
 * [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
+* [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim  
+* [lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline): A lightweight plugin to display the list of buffers in the lightline vim plugin  
 
 **COLOR SCHEMES**
 

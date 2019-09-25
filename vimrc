@@ -38,8 +38,9 @@ Plug 'tpope/vim-obsession'
 Plug 'roman/golden-ratio'
 Plug 'jiangmiao/auto-pairs'
 Plug 'chriskempson/base16-vim'
-Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'mike-hearn/base16-vim-lightline'
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
@@ -54,7 +55,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
-" Plug 'w0rp/ale'
 Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -64,7 +64,7 @@ Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
-Plug 'RRethy/vim-hexokinase'
+Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
 Plug 'mattn/gist-vim'
@@ -119,6 +119,7 @@ endif
 set fillchars+=vert:.                     " Change vertical split character 
 set noshowmode                            " Don't dispay mode in command line
 set guioptions=aAce                       " GUI options
+set showtabline=2
 set nonumber                              " Row number
 set hidden                                " allow hidden buffer
 set so=10                                 " Row after cursor
@@ -283,16 +284,6 @@ let g:SignatureMarkTextHLDynamic = 1
 let g:SignatureMarkerTextHLDynamic = 1
 
 " =============================================================================
-" ALE
-" =============================================================================
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_lint_on_enter = 0
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
-" let g:ale_sign_error = '✘'
-" let g:ale_sign_warning = '⚠'
-
-" =============================================================================
 " COC
 " =============================================================================
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -310,28 +301,112 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+let g:coc_status_error_sign = '•'
+let g:coc_status_warning_sign = '•'
 
 " =============================================================================
-" VIM-AIRLINE
+" LIGHTLINE AND LIGHTLINE-BUFFERLINE
 " =============================================================================
-let g:airline_powerline_fonts = 1
-let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_section_y = airline#section#create_right(['ffenc','','%{rvm#statusline()}'])
-let g:airline_theme = 'base16'
-" let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#obsession#enabled = 1
-let g:airline_right_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_left_alt_sep= ''
-let g:airline_left_sep = ''
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline = {
+      \ 'colorscheme': 'base16_eighties',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'rvm', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'Lightlinegit',
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \   'rvm': 'rvm#statusline',
+      \   'filename': 'LightlineFilename',
+      \   'readonly': 'LightLineReadonly',
+      \   'currentfunction'  : 'CocCurrentFunction',
+      \   'tagbar'  : 'LightLineTagbar',
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers',
+      \   'cocerror': 'LightLineCocError',
+      \   'cocwarn': 'LightLineCocWarn',
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel',
+      \   'cocerror': 'error',
+      \   'cocwarn' : 'warning',
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [['cocerror', 'cocwarn', 'currentfunction' ]]
+      \ }
+      \ }
 
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
+function! LightlineFilename()
+  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+  let modified = &modified ? ' +' : ''
+  return filename . modified
+endfunction
+
+function! LightLineReadonly()
+    if &filetype == "help"
+        return ""
+    elseif &readonly
+        return ""
+    else
+        return ""
+    endif
+endfunction
+
+function! LightLineCocError()
+  let s:error_sign = get(g:, 'coc_status_error_sign')
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info)
+    return ''
+  endif
+  let errmsgs = []
+  if get(info, 'error', 0)
+    call add(errmsgs, s:error_sign . info['error'])
+  endif
+  return trim(join(errmsgs, ' ') . ' ' . get(g:, 'coc_status', ''))
+endfunction
+
+function! LightLineCocWarn() abort
+  let s:warning_sign = get(g:, 'coc_status_warning_sign')
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info)
+    return ''
+  endif
+  let warnmsgs = []
+  if get(info, 'warning', 0)
+    call add(warnmsgs, s:warning_sign . info['warning'])
+  endif
+  return trim(join(warnmsgs, ' ') . ' ' . get(g:, 'coc_status', ''))
+endfunction
+
+function! Lightlinegit()
+  let l:branch = fugitive#head()
+  return l:branch ==# '' ? '' : ' ' . l:branch
+endfunction
+
+autocmd User CocDiagnosticChange call lightline#update()
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " =============================================================================
 " VIM-HEXOKINASE
 " =============================================================================
 let g:Hexokinase_ftAutoload = ['*']
 let g:Hexokinase_highlighters = ['sign_column']
-let g:Hexokinase_refreshEvents = ['BufWritePost']
+" let g:Hexokinase_refreshEvents = ['BufWritePost']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba']
 
 " =============================================================================
@@ -349,8 +424,6 @@ let g:tmuxline_separators = {
       \ 'right' : '',
       \ 'right_alt' : '',
       \ 'space' : ' '}
-let g:airline#extensions#tmuxline#enabled = 0
-" let g:tmuxline_powerline_separators = 0
 
 " =============================================================================
 " FILETYPE
@@ -435,7 +508,7 @@ let g:EasyMotion_smartcase = 1
 " ============================================================================
 " Vim-gutentags
 " =============================================================================
-" set tags+=tags,.git/tags
+set tags+=tags,.git/tags
 let g:gutentags_enabled = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
