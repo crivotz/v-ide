@@ -59,7 +59,6 @@ Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'sodapopcan/vim-twiggy'
 Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -75,6 +74,7 @@ Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
 Plug 'valloric/MatchTagAlways'
 Plug 'tweekmonster/startuptime.vim'
+Plug 'dhruvasagar/vim-zoom'
 call plug#end()
 
 " =============================================================================
@@ -93,7 +93,6 @@ if filereadable(expand("~/.vimrc_background"))
 else
   color base16-default-dark
 endif
-
 " =============================================================================
 " CHECK OS
 " =============================================================================
@@ -256,6 +255,9 @@ endfunction
 " =============================================================================
 let g:ctrlsf_ackprg = 'rg'
 let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
 
 " =============================================================================
 " NOTATIONAL VIM
@@ -267,6 +269,7 @@ let g:nv_search_paths = ['~/Note']
 " =============================================================================
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " =============================================================================
 " NETRW
@@ -310,16 +313,21 @@ let g:coc_status_warning_sign = '•'
 let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline = {
-      \ 'colorscheme': 'base16_eighties',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename' ] ],
+      \             [ 'gitbranch', 'readonly', 'filename' ],
+      \             ['zoom'] ],
       \   'right': [ [ 'lineinfo' ],
       \             [ 'percent' ],
-      \             [ 'rvm', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \             [ 'rvm' ],
+      \             [ 'fileformat' ],
+      \             [ 'fileencoding' ],
+      \             [ 'filetype' ]]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'Lightlinegit',
+      \   'zoom': 'Lightlinezoom',
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'rvm': 'rvm#statusline',
@@ -327,6 +335,7 @@ let g:lightline = {
       \   'readonly': 'LightLineReadonly',
       \   'currentfunction'  : 'CocCurrentFunction',
       \   'tagbar'  : 'LightLineTagbar',
+      \   'mode'  : 'LightlineMode',
       \ },
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers',
@@ -344,6 +353,13 @@ let g:lightline = {
       \ }
       \ }
 
+function! LightlineMode()
+  return &filetype ==# 'tagbar' ? 'TAGBAR' :
+        \ &filetype ==# 'ctrlsf' ? 'CTRLSF' :
+        \ &filetype ==# 'fugitive' ? 'FUGITIVE' :
+        \ lightline#mode()
+endfunction
+
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
@@ -359,13 +375,13 @@ function! LightlineFilename()
 endfunction
 
 function! LightLineReadonly()
-    if &filetype == "help"
-        return ""
-    elseif &readonly
-        return ""
-    else
-        return ""
-    endif
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return ""
+  else
+    return ""
+  endif
 endfunction
 
 function! LightLineCocError()
@@ -399,8 +415,18 @@ function! Lightlinegit()
   return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
+function! Lightlinezoom()
+  return zoom#statusline()
+endfunction
+
 autocmd User CocDiagnosticChange call lightline#update()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+
+" =============================================================================
+" VIM-ZOOM
+" =============================================================================
+let g:zoom#statustext = ' ZOOM'
+
 " =============================================================================
 " VIM-HEXOKINASE
 " =============================================================================
@@ -431,14 +457,15 @@ let g:tmuxline_separators = {
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global=1
-" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-" autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile=1
-" autocmd FileType ruby,eruby let g:rubycomplete_use_bundler=1
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd BufNewFile,BufRead /*.rasi setf css
+" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile=1
+" autocmd FileType ruby,eruby let g:rubycomplete_use_bundler=1
 " autocmd BufRead,BufNewFile *.md setlocal spell
 
 " =============================================================================
@@ -556,11 +583,3 @@ nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordExec
 nmap     <C-F>n <Plug>CtrlSFCwordExec
 nnoremap <C-F>t :CtrlSFToggle<CR>
-
-" =============================================================================
-" DISABLED KEYS
-" =============================================================================
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
