@@ -36,7 +36,6 @@ Thanks to the developers of these plugins/color schemes
 * [vim-dadbod](https://github.com/tpope/vim-dadbod): Modern database interface for Vim
 * [Vim-eunuch](https://github.com/tpope/vim-eunuch): Helpers for UNIX.  
 * [vim-jdaddy](https://github.com/tpope/vim-jdaddy): JSON manipulation and pretty printing.  
-* [Tmuxline](https://github.com/edkolev/tmuxline.vim): Simple tmux statusline generator with support for powerline symbols and statusline / airline / lightline integration
 * [vim-signify](https://github.com/mhinz/vim-signify): Show a diff using Vim its sign column  .
 * [Scss_syntax](https://github.com/cakebaker/scss-syntax.vim): Vim syntax file for scss
 * [Tagbar](http://majutsushi.github.io/tagbar/): Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure
@@ -76,10 +75,11 @@ Thanks to the developers of these plugins/color schemes
 * [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
 * [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim  
 * [lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline): A lightweight plugin to display the list of buffers in the lightline vim plugin  
+* [zplugin-vim-syntax](https://github.com/zplugin/zplugin-vim-syntax): A Vim syntax definition for Zplugin commands in any ft=zsh file  
 
 **COLOR SCHEMES**
 
-* [Base16](https://github.com/chriskempson/base16-vim)
+* [nord](https://github.com/arcticicestudio/nord-vim)
 
 **SYNTAX**
 
@@ -113,7 +113,6 @@ vim
 **DEPENDENCIES**
 
 * Vim compiled with ruby and lua
-* [BASE16-SHELL](https://github.com/chriskempson/base16-shell)
 * [Exuberant ctags](http://ctags.sourceforge.net)
 * [FZF](https://github.com/junegunn/fzf)
 * [Ranger](http://ranger.nongnu.org)

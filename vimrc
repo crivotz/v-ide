@@ -37,11 +37,8 @@ Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-obsession'
 Plug 'roman/golden-ratio'
 Plug 'jiangmiao/auto-pairs'
-Plug 'chriskempson/base16-vim'
-Plug 'mike-hearn/base16-vim-lightline'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'ludovicchabant/vim-gutentags'
@@ -51,7 +48,7 @@ Plug 'airblade/vim-rooter'
 Plug 'benmills/vimux'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
@@ -75,12 +72,13 @@ Plug 'alok/notational-fzf-vim'
 Plug 'valloric/MatchTagAlways'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'zplugin/zplugin-vim-syntax'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " =============================================================================
-" SET THE GUI COLOR SCHEME - BASE16-SHELL
+" SET THE GUI COLOR SCHEME
 " =============================================================================
-if filereadable(expand("~/.vimrc_background"))
   set t_Co=256
   if has("termguicolors")
     set termguicolors
@@ -88,11 +86,8 @@ if filereadable(expand("~/.vimrc_background"))
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   endif
-  let base16colorspace=256
-  source ~/.vimrc_background
-else
-  color base16-default-dark
-endif
+  color nord
+
 " =============================================================================
 " CHECK OS
 " =============================================================================
@@ -444,12 +439,12 @@ autocmd! User GoyoLeave Limelight!
 " =============================================================================
 " TMUXLINE
 " =============================================================================
-let g:tmuxline_separators = {
-      \ 'left' : '',
-      \ 'left_alt': '',
-      \ 'right' : '',
-      \ 'right_alt' : '',
-      \ 'space' : ' '}
+" let g:tmuxline_separators = {
+"       \ 'left' : '',
+"       \ 'left_alt': '',
+"       \ 'right' : '',
+"       \ 'right_alt' : '',
+"       \ 'space' : ' '}
 
 " =============================================================================
 " FILETYPE
