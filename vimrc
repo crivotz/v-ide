@@ -35,6 +35,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-sleuth'
 Plug 'roman/golden-ratio'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
@@ -46,9 +47,11 @@ Plug 'kshenoy/vim-signature'
 Plug 'yggdroot/indentline'
 Plug 'airblade/vim-rooter'
 Plug 'benmills/vimux'
+Plug 'chaoren/vim-wordmotion'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/goyo.vim' | Plug 'junegunn/limelight.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
@@ -110,30 +113,34 @@ endif
 " =============================================================================
 " SETTINGS
 " =============================================================================
-set fillchars+=vert:.                     " Change vertical split character 
-set noshowmode                            " Don't dispay mode in command line
+set fillchars+=vert:.                     " Change vertical split character
 set guioptions=aAce                       " GUI options
 set showtabline=2
-set nonumber                              " Row number
-set hidden                                " allow hidden buffer
 set so=10                                 " Row after cursor
-set splitright                            " Open vertical splits to the right
-set splitbelow                            " Open horizontal splits to the bottom
-set wrapscan                              " Start search from the beginning
 set fileformat=unix                       " set fileformat
-set nobackup                              " No backups
-set nowritebackup                         " No backups
-set noswapfile                            " No swap 
 set tabstop=2                             " N space for tab
-set shiftwidth=2                          " N space for autoindent
-set noautowrite                           " no auto save on buffer switch
 set mouse=a                               " Mouse enabled
 set colorcolumn=+1                        " Highlight column 81
-set noundofile                            " no undo files
 set backupcopy=yes
 set foldmethod=indent
 set foldlevel=1
 set foldnestmax=10
+set undolevels=1000 						          " n of changes that can be undone
+set spelllang=it                          " set default spell to it
+set softtabstop=2
+set signcolumn=yes
+set shortmess+=c
+set noshowmode                            " Don't dispay mode in command line
+set nonumber                              " Row number
+set hidden                                " allow hidden buffer
+set splitright                            " Open vertical splits to the right
+set splitbelow                            " Open horizontal splits to the bottom
+set wrapscan                              " Start search from the beginning
+set nobackup                              " No backups
+set nowritebackup                         " No backups
+set noswapfile                            " No swap 
+set noautowrite                           " no auto save on buffer switch
+set noundofile                            " no undo files
 set nofoldenable                          " Open all folds by default
 set showcmd                               " Show command 
 set showmatch                             " Show close bracket
@@ -141,15 +148,9 @@ set ignorecase                            " no case sensitive search patterns
 set hlsearch                              " Highlight search results
 set smartcase                             " Search with caps - override ignorecase
 set esckeys                               " cursor keys in I mode
-set undolevels=1000 						          " n of changes that can be undone
 set noerrorbells                          " do not use errorbells
 set nojoinspaces                          " two spaces after a period on join
 set title                                 " show window title
-set spelllang=it                          " set default spell to it
-set softtabstop=2
-set expandtab                               
-set signcolumn=yes
-set shortmess+=c
 
 " jump to the last known cursor position
 autocmd BufReadPost *
@@ -431,22 +432,6 @@ let g:Hexokinase_highlighters = ['sign_column']
 let g:Hexokinase_optInPatterns = ['full_hex', 'triple_hex', 'rgb', 'rgba']
 
 " =============================================================================
-" GOYO & LIMELIGHT
-" =============================================================================
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" =============================================================================
-" TMUXLINE
-" =============================================================================
-" let g:tmuxline_separators = {
-"       \ 'left' : '',
-"       \ 'left_alt': '',
-"       \ 'right' : '',
-"       \ 'right_alt' : '',
-"       \ 'space' : ' '}
-
-" =============================================================================
 " FILETYPE
 " =============================================================================
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading=1
@@ -457,6 +442,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
 autocmd BufNewFile,BufRead /*.rasi setf css
 " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 " autocmd FileType ruby,eruby let g:rubycomplete_load_gemfile=1
@@ -574,7 +560,9 @@ map  n <Plug>(anzu-n-with-echo)
 map  N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
-nmap     <C-F>f <Plug>CtrlSFPrompt
-vmap     <C-F>f <Plug>CtrlSFVwordExec
-nmap     <C-F>n <Plug>CtrlSFCwordExec
+nmap <C-F>f <Plug>CtrlSFPrompt
+vmap <C-F>f <Plug>CtrlSFVwordExec
+nmap <C-F>n <Plug>CtrlSFCwordExec
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 nnoremap <C-F>t :CtrlSFToggle<CR>

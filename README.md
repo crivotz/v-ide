@@ -69,13 +69,14 @@ Thanks to the developers of these plugins/color schemes
 * [bclose](https://github.com/rbgrouleff/bclose.vim): The fancy start screen for Vim  
 * [notational-fzf-vim](https://github.com/alok/notation-fzf-vim): Notational velocity for vim  
 * [goyo](https://github.com/junegunn/goyo.vim): Distraction-free writing in Vim  
-* [limelight](https://github.com/alok/limelight.vim): All the world's indeed a stage and we are merely players  
 * [golden-ratio](https://github.com/roman/golden-ratio): Automatic resizing of Vim windows to the golden ratio  
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
 * [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
 * [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim  
 * [lightline-bufferline](https://github.com/mengelbrecht/lightline-bufferline): A lightweight plugin to display the list of buffers in the lightline vim plugin  
 * [zplugin-vim-syntax](https://github.com/zplugin/zplugin-vim-syntax): A Vim syntax definition for Zplugin commands in any ft=zsh file  
+* [vim-easy-align](https://github.com/junegunn/vim-easy-align): A Vim alignment plugin  
+* [vim-wordmotion](https://github.com/chaoren/vim-wordmotion): More useful word motions for Vim  
 
 **COLOR SCHEMES**
 
