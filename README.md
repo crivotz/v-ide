@@ -77,6 +77,8 @@ Thanks to the developers of these plugins/color schemes
 * [zplugin-vim-syntax](https://github.com/zplugin/zplugin-vim-syntax): A Vim syntax definition for Zplugin commands in any ft=zsh file  
 * [vim-easy-align](https://github.com/junegunn/vim-easy-align): A Vim alignment plugin  
 * [vim-wordmotion](https://github.com/chaoren/vim-wordmotion): More useful word motions for Vim  
+* [vim-flog](https://github.com/rbong/vim-flog): A lightweight and powerful git branch viewer for vim.  
+* [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
 
 **COLOR SCHEMES**
 

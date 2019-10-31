@@ -75,7 +75,9 @@ Plug 'alok/notational-fzf-vim'
 Plug 'valloric/MatchTagAlways'
 Plug 'tweekmonster/startuptime.vim'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'rbong/vim-flog'
 Plug 'zplugin/zplugin-vim-syntax'
+Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
@@ -258,7 +260,7 @@ let g:ctrlsf_auto_focus = {
 " =============================================================================
 " NOTATIONAL VIM
 " =============================================================================
-let g:nv_search_paths = ['~/Note']
+let g:nv_search_paths = ['~/Note', '~/ToDo']
 
 " =============================================================================
 " RANGER
