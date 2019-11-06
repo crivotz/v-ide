@@ -73,7 +73,6 @@ Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
 Plug 'valloric/MatchTagAlways'
-Plug 'tweekmonster/startuptime.vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'rbong/vim-flog'
 Plug 'zplugin/zplugin-vim-syntax'
@@ -508,7 +507,7 @@ let g:devdocs_filetype_map = {
 " =============================================================================
 " Vim-polyglot
 " =============================================================================
-let g:polyglot_disabled = ['markdown']
+let g:polyglot_disabled = []
 
 " ============================================================================
 " Vim-easymotion

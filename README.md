@@ -48,7 +48,6 @@ Thanks to the developers of these plugins/color schemes
 * [vimux](https://github.com/benmills/vimux): vim plugin to interact with tmux
 * [fzf.vim](https://github.com/junegunn/fzf.vim): fzf loves vim
 * [vim-peekaboo](https://github.com/junegunn/vim-peekaboo): will show you the contents of the registers on the sidebar  
-* [startuptime](https://github.com/tweekmonster/startuptime.vim): Breakdown Vim's --startuptime output
 * [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim
