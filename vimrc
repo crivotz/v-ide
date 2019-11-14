@@ -83,14 +83,16 @@ call plug#end()
 " =============================================================================
 " SET THE GUI COLOR SCHEME
 " =============================================================================
-  set t_Co=256
-  if has("termguicolors")
-    set termguicolors
-    " set Vim-specific sequences for RGB colors
+set t_Co=256
+if has("termguicolors")
+  set termguicolors
+  " set Vim-specific sequences for RGB colors
+  if exists('$TMUX')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   endif
-  color nord
+endif
+color nord
 
 " =============================================================================
 " CHECK OS
@@ -253,8 +255,8 @@ endfunction
 let g:ctrlsf_ackprg = 'rg'
 let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_auto_focus = {
-    \ "at": "start"
-    \ }
+      \ "at": "start"
+      \ }
 
 " =============================================================================
 " NOTATIONAL VIM
@@ -287,7 +289,7 @@ let g:SignatureMarkerTextHLDynamic = 1
 " COC
 " =============================================================================
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-let g:coc_global_extensions = ['coc-solargraph', 'coc-highlight', 'coc-python', 'coc-yaml', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-tsserver', 'coc-prettier']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-highlight', 'coc-python', 'coc-yaml', 'coc-html', 'coc-css', 'coc-json', 'coc-snippets', 'coc-tsserver', 'coc-prettier', 'coc-flutter']
 autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -366,9 +368,14 @@ function! MyFileformat()
 endfunction
 
 function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
   let modified = &modified ? ' +' : ''
-  return filename . modified
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:] . modified
+  endif
+  return expand('%') . modified
+endif
 endfunction
 
 function! LightLineReadonly()
