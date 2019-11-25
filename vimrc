@@ -36,7 +36,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-jdaddy'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
-Plug 'roman/golden-ratio'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -54,7 +53,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } | Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
-Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
@@ -78,6 +76,7 @@ Plug 'rbong/vim-flog'
 Plug 'zplugin/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
+Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 " =============================================================================
@@ -262,13 +261,6 @@ let g:ctrlsf_auto_focus = {
 " NOTATIONAL VIM
 " =============================================================================
 let g:nv_search_paths = ['~/Note', '~/ToDo']
-
-" =============================================================================
-" RANGER
-" =============================================================================
-let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 1
-let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " =============================================================================
 " NETRW
@@ -540,7 +532,7 @@ nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F4> :Goyo<CR>
 nmap <F5> :set list! list?<CR>
-nmap <F7> :Ranger<CR>
+nmap <silent> <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
 autocmd FileType json nmap <F10> :%!python -m json.tool<cr>

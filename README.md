@@ -49,7 +49,6 @@ Thanks to the developers of these plugins/color schemes
 * [fzf.vim](https://github.com/junegunn/fzf.vim): fzf loves vim
 * [vim-peekaboo](https://github.com/junegunn/vim-peekaboo): will show you the contents of the registers on the sidebar  
 * [vim-anzu](https://github.com/osyo-manga/vim-anzu): Vim search status  
-* [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons.git): Adds file type glyphs/icons to popular Vim plugins
 * [vim-tmux-focus](https://github.com/tmux-plugins/vim-tmux-focus-events.git): Make terminal vim and tmux work better together
@@ -68,7 +67,6 @@ Thanks to the developers of these plugins/color schemes
 * [bclose](https://github.com/rbgrouleff/bclose.vim): The fancy start screen for Vim  
 * [notational-fzf-vim](https://github.com/alok/notation-fzf-vim): Notational velocity for vim  
 * [goyo](https://github.com/junegunn/goyo.vim): Distraction-free writing in Vim  
-* [golden-ratio](https://github.com/roman/golden-ratio): Automatic resizing of Vim windows to the golden ratio  
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
 * [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
 * [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim  
@@ -78,6 +76,8 @@ Thanks to the developers of these plugins/color schemes
 * [vim-wordmotion](https://github.com/chaoren/vim-wordmotion): More useful word motions for Vim  
 * [vim-flog](https://github.com/rbong/vim-flog): A lightweight and powerful git branch viewer for vim.  
 * [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
+* [nerdtree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim  
+* [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin): Aplugin of NERDTree showing git status  
 
 **COLOR SCHEMES**
 
@@ -117,7 +117,6 @@ vim
 * Vim compiled with ruby and lua
 * [Exuberant ctags](http://ctags.sourceforge.net)
 * [FZF](https://github.com/junegunn/fzf)
-* [Ranger](http://ranger.nongnu.org)
 * [Prettier](https://prettier.io)
 * [Ruby](https://www.ruby-lang.org)
 * [Python](https://www.python.org)
