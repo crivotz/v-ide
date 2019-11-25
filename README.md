@@ -78,6 +78,7 @@ Thanks to the developers of these plugins/color schemes
 * [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
 * [nerdtree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim  
 * [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin): Aplugin of NERDTree showing git status  
+* [drzel/vim-line-no-indicator](https://github.com/drzel/vim-line-no-indicator): Simple and expressive line number indicator  
 
 **COLOR SCHEMES**
 

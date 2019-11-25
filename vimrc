@@ -77,6 +77,7 @@ Plug 'zplugin/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'drzel/vim-line-no-indicator'
 call plug#end()
 
 " =============================================================================
@@ -309,8 +310,7 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename' ],
       \             ['zoom'] ],
-      \   'right': [ [ 'lineinfo' ],
-      \             [ 'percent' ],
+      \   'right':  [ ['linenoindicator'],
       \             [ 'rvm' ],
       \             [ 'fileformat' ],
       \             [ 'fileencoding' ],
@@ -327,6 +327,7 @@ let g:lightline = {
       \   'currentfunction'  : 'CocCurrentFunction',
       \   'tagbar'  : 'LightLineTagbar',
       \   'mode'  : 'LightlineMode',
+      \   'linenoindicator'  : 'LineNoIndicator',
       \ },
       \ 'component_expand': {
       \   'buffers': 'lightline#bufferline#buffers',
