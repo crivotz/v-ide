@@ -118,6 +118,7 @@ vim
 * Vim compiled with ruby and lua
 * [Exuberant ctags](http://ctags.sourceforge.net)
 * [FZF](https://github.com/junegunn/fzf)
+* [ripgrep](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern  
 * [Prettier](https://prettier.io)
 * [Ruby](https://www.ruby-lang.org)
 * [Python](https://www.python.org)
@@ -125,5 +126,4 @@ vim
 
 **SUGGESTION**
 
-* Font: [Knack Nerd fonts](https://github.com/ryanoasis/nerd-fonts) or DejaVu Sans Mono for Powerline or [Hack](http://sourcefoundry.org/hack)
-* [ripgrep](https://github.com/BurntSushi/ripgrep): ripgrep recursively searches directories for a regex pattern  
+* Font: [Fira Code Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
