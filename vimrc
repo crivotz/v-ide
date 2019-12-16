@@ -76,8 +76,8 @@ Plug 'rbong/vim-flog'
 Plug 'zplugin/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
-Plug 'scrooloose/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'drzel/vim-line-no-indicator'
+Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 call plug#end()
 
 " =============================================================================
@@ -188,6 +188,13 @@ hi! SignifySignChange guibg=NONE
 " execute "set colorcolumn=" . join(range(81,335), ',') " Highlight from column 81
 " set cursorcolumn " highlight the column the cursor is on
 " set cursorline " highlight the line the cursor is on
+
+" =============================================================================
+" RANGER
+" =============================================================================
+let g:ranger_map_keys = 0
+let g:ranger_replace_netrw = 1
+let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
 " =============================================================================
 " FZF
@@ -533,7 +540,7 @@ nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F4> :Goyo<CR>
 nmap <F5> :set list! list?<CR>
-nmap <silent> <F7> :NERDTreeToggle<CR>
+nmap <silent> <F7> :Ranger<CR>
 nmap <F8> :TagbarToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
 autocmd FileType json nmap <F10> :%!python -m json.tool<cr>

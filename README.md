@@ -76,9 +76,8 @@ Thanks to the developers of these plugins/color schemes
 * [vim-wordmotion](https://github.com/chaoren/vim-wordmotion): More useful word motions for Vim  
 * [vim-flog](https://github.com/rbong/vim-flog): A lightweight and powerful git branch viewer for vim.  
 * [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
-* [nerdtree](https://github.com/scrooloose/nerdtree): A tree explorer plugin for vim  
-* [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin): Aplugin of NERDTree showing git status  
 * [drzel/vim-line-no-indicator](https://github.com/drzel/vim-line-no-indicator): Simple and expressive line number indicator  
+* [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.  
 
 **COLOR SCHEMES**
 
@@ -122,6 +121,7 @@ vim
 * [Ruby](https://www.ruby-lang.org)
 * [Python](https://www.python.org)
 * [LUA](https://www.lua.org)
+* [Ranger](http://ranger.nongnu.org)
 
 **SUGGESTION**
 
