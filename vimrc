@@ -39,7 +39,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kshenoy/vim-signature'
@@ -78,6 +77,7 @@ Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 " =============================================================================
@@ -332,7 +332,7 @@ let g:lightline = {
       \   'filename': 'LightlineFilename',
       \   'readonly': 'LightLineReadonly',
       \   'currentfunction'  : 'CocCurrentFunction',
-      \   'tagbar'  : 'LightLineTagbar',
+      \   'method'  : 'NearestMethodOrFunction',
       \   'mode'  : 'LightlineMode',
       \   'linenoindicator'  : 'LineNoIndicator',
       \ },
@@ -353,7 +353,7 @@ let g:lightline = {
       \ }
 
 function! LightlineMode()
-  return &filetype ==# 'tagbar' ? 'TAGBAR' :
+  return &filetype ==# 'vista' ? 'VISTA' :
         \ &filetype ==# 'ctrlsf' ? 'CTRLSF' :
         \ &filetype ==# 'fugitive' ? 'FUGITIVE' :
         \ lightline#mode()
@@ -421,6 +421,10 @@ endfunction
 
 function! Lightlinezoom()
   return zoom#statusline()
+endfunction
+
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 autocmd User CocDiagnosticChange call lightline#update()
@@ -534,6 +538,16 @@ let g:gutentags_project_root = ['.git']
 let g:gutentags_ctags_extra_args = ['--fields=+l']
 let g:gutentags_add_default_project_roots = 0
 
+" ============================================================================
+" Vista
+" =============================================================================
+let g:vista#renderer#enable_icon = 1
+let g:vista#finders = ['fzf']
+let g:vista_executive_for = {
+  \ 'ruby': 'coc',
+  \ }
+let g:vista_fzf_preview = []
+
 " =============================================================================
 "<F1> open help
 nnoremap <F2> :set invnumber<CR>
@@ -541,7 +555,7 @@ nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F4> :Goyo<CR>
 nmap <F5> :set list! list?<CR>
 nmap <silent> <F7> :Ranger<CR>
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :Vista<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
 autocmd FileType json nmap <F10> :%!python -m json.tool<cr>
 nmap <Leader>bda :bd <C-a> <CR>
@@ -553,6 +567,7 @@ nmap <Leader>nv :NV<CR>
 nmap <Leader>p :FZF<CR>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>l :Lines 
+nmap <Leader>v :Vista finder<CR>
 nmap <Leader>g :20G<CR> 
 nmap <Leader>gg :GFiles?<CR> 
 nmap <Leader>xx :VimuxPromptCommand<CR>

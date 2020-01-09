@@ -38,7 +38,6 @@ Thanks to the developers of these plugins/color schemes
 * [vim-jdaddy](https://github.com/tpope/vim-jdaddy): JSON manipulation and pretty printing.  
 * [vim-signify](https://github.com/mhinz/vim-signify): Show a diff using Vim its sign column  .
 * [Scss_syntax](https://github.com/cakebaker/scss-syntax.vim): Vim syntax file for scss
-* [Tagbar](http://majutsushi.github.io/tagbar/): Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure
 * [vim-easymotion](https://github.com/easymotion/vim-easymotion): Vim motions on speed! 
 * [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags): A vim plugin that manages your tag files  
 * [emmet-vim](https://github.com/mattn/emmet-vim.git): [emmet](http://emmet.io) for vim
@@ -78,6 +77,7 @@ Thanks to the developers of these plugins/color schemes
 * [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
 * [drzel/vim-line-no-indicator](https://github.com/drzel/vim-line-no-indicator): Simple and expressive line number indicator  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.  
+* [Vista](https://github.com/liuchengxu/vista.vim): Viewer & Finder for LSP symbols and tags  
 
 **COLOR SCHEMES**
 
@@ -115,7 +115,7 @@ vim
 **DEPENDENCIES**
 
 * Vim compiled with ruby and lua
-* [Exuberant ctags](http://ctags.sourceforge.net)
+* [Universal-ctags](https://github.com/universal-ctags/ctags) with JSON format
 * [FZF](https://github.com/junegunn/fzf)
 * [Prettier](https://prettier.io)
 * [Ruby](https://www.ruby-lang.org)
