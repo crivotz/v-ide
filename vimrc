@@ -12,11 +12,23 @@ set langmenu=en_US.UTF-8
 " =============================================================================
 " VIM-PLUG
 " =============================================================================
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+let vimplug_exists=expand('~/.vim/autoload/plug.vim')
+if !filereadable(vimplug_exists)
+  if !executable("curl")
+    echoerr "You have to install curl or first install vim-plug by yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent exec "!curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  let g:not_finis_vimplug = "yes"
+  autocmd VimEnter * PlugInstall
 endif
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-sensible'
@@ -69,7 +81,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
-Plug 'valloric/MatchTagAlways'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'rbong/vim-flog'
 Plug 'zplugin/zplugin-vim-syntax'
@@ -150,7 +161,7 @@ set showmatch                             " Show close bracket
 set ignorecase                            " no case sensitive search patterns
 set hlsearch                              " Highlight search results
 set smartcase                             " Search with caps - override ignorecase
-set esckeys                               " cursor keys in I mode
+" set esckeys                               " cursor keys in I mode
 set noerrorbells                          " do not use errorbells
 set nojoinspaces                          " two spaces after a period on join
 set title                                 " show window title
@@ -564,14 +575,13 @@ nmap <Leader>bp :bp<CR>
 nmap <Leader>bb :Buffers<CR>
 nmap <Leader>nm :Dispatch npm start<CR>
 nmap <Leader>nv :NV<CR>
-nmap <Leader>p :FZF<CR>
+nmap <Leader>p :call fzf#vim#files('', fzf#vim#with_preview({'options': '--prompt ""'}, 'right:70%'))<CR>
 nmap <Leader>r :Rg<CR>
 nmap <Leader>l :Lines 
 nmap <Leader>v :Vista finder<CR>
 nmap <Leader>g :20G<CR> 
 nmap <Leader>gg :GFiles?<CR> 
 nmap <Leader>xx :VimuxPromptCommand<CR>
-nmap <Leader>% :MtaJumpToOtherTag<CR>
 nmap <silent> <Leader>sp :set spell!<CR>
 nmap K <Plug>(devdocs-under-cursor)
 map <Leader> <Plug>(easymotion-prefix)
