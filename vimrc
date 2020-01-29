@@ -24,11 +24,6 @@ if !filereadable(vimplug_exists)
   let g:not_finis_vimplug = "yes"
   autocmd VimEnter * PlugInstall
 endif
-" if empty(glob('~/.vim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-" endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'tpope/vim-sensible'
@@ -83,7 +78,7 @@ Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
 Plug 'dhruvasagar/vim-zoom'
 Plug 'rbong/vim-flog'
-Plug 'zplugin/zplugin-vim-syntax'
+Plug 'zinit-zsh/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 Plug 'drzel/vim-line-no-indicator'
@@ -114,10 +109,10 @@ if has('unix')
   if s:uname == "Darwin\n"
     " Do Mac stuff here
     set guifont=FuraCode\ Nerd\ Font\ Mono\:h11
-    set rtp+=/usr/local/opt/fzf
+    set rtp+=~/.zinit/plugins/junegunn---fzf
   else
     set guifont=FuraCode\ Nerd\ Font\ Mono\ 8
-    set rtp+=~/.fzf
+    set rtp+=~/.zinit/plugins/junegunn---fzf
   endif
 elseif has('win32') || has('win64')
   behave mswin
@@ -329,7 +324,8 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename' ],
       \             ['zoom'] ],
-      \   'right':  [ ['linenoindicator'],
+      \   'right':  [ ['lineinfo'],
+      \             [ 'linenoindicator' ],
       \             [ 'rvm' ],
       \             [ 'fileformat' ],
       \             [ 'fileencoding' ],
