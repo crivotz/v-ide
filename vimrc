@@ -222,6 +222,87 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
+fu s:snr() abort
+    return matchstr(expand('<sfile>'), '.*\zs<SNR>\d\+_')
+endfu
+let s:snr = get(s:, 'snr', s:snr())
+let g:fzf_layout = {'window': 'call '..s:snr..'fzf_window(0.9, 0.6, "Comment")'}
+
+fu s:fzf_window(width, height, border_highlight) abort
+    let width = float2nr(&columns * a:width)
+    let height = float2nr(&lines * a:height)
+    let row = float2nr((&lines - height) / 2)
+    let col = float2nr((&columns - width) / 2)
+    let top = '┌' . repeat('─', width - 2) . '┐'
+    let mid = '│' . repeat(' ', width - 2) . '│'
+    let bot = '└' . repeat('─', width - 2) . '┘'
+    let border = [top] + repeat([mid], height - 2) + [bot]
+    if has('nvim')
+        let frame = s:create_float(a:border_highlight, {
+            \ 'row': row,
+            \ 'col': col,
+            \ 'width': width,
+            \ 'height': height,
+            \ })
+        call nvim_buf_set_lines(frame, 0, -1, v:true, border)
+        call s:create_float('Normal', {
+            \ 'row': row + 1,
+            \ 'col': col + 2,
+            \ 'width': width - 4,
+            \ 'height': height - 2,
+            \ })
+        exe 'au BufWipeout <buffer> bw '..frame
+    else
+        let frame = s:create_popup_window(a:border_highlight, {
+            \ 'line': row,
+            \ 'col': col,
+            \ 'width': width,
+            \ 'height': height,
+            \ 'is_frame': 1,
+            \ })
+        call setbufline(frame, 1, border)
+        call s:create_popup_window('Normal', {
+            \ 'line': row + 1,
+            \ 'col': col + 2,
+            \ 'width': width - 4,
+            \ 'height': height - 2,
+            \ })
+    endif
+endfu
+
+fu s:create_float(hl, opts) abort
+    let buf = nvim_create_buf(v:false, v:true)
+    let opts = extend({'relative': 'editor', 'style': 'minimal'}, a:opts)
+    let win = nvim_open_win(buf, v:true, opts)
+    call setwinvar(win, '&winhighlight', 'NormalFloat:'..a:hl)
+    return buf
+endfu
+
+fu s:create_popup_window(hl, opts) abort
+    if has_key(a:opts, 'is_frame')
+        let id = popup_create('', #{
+            \ line: a:opts.line,
+            \ col: a:opts.col,
+            \ minwidth: a:opts.width,
+            \ minheight: a:opts.height,
+            \ zindex: 50,
+            \ })
+        call setwinvar(id, '&wincolor', a:hl)
+        exe 'au BufWipeout * ++once call popup_close('..id..')'
+        return winbufnr(id)
+    else
+        let buf = term_start(&shell, #{hidden: 1})
+        call popup_create(buf, #{
+            \ line: a:opts.line,
+            \ col: a:opts.col,
+            \ minwidth: a:opts.width,
+            \ minheight: a:opts.height,
+            \ zindex: 51,
+            \ })
+        exe 'au BufWipeout * ++once bw! '..buf
+    endif
+endfu
+
 " =============================================================================
 " VIM-STARTIFY
 " =============================================================================
@@ -267,7 +348,8 @@ endfunction
 " CTRLSF
 " =============================================================================
 let g:ctrlsf_ackprg = 'rg'
-let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrls_auto_preview = 1
+let g:ctrlsf_search_mode = 'async'
 let g:ctrlsf_auto_focus = {
       \ "at": "start"
       \ }
@@ -576,8 +658,8 @@ nmap <Leader>p :call fzf#vim#files('', fzf#vim#with_preview({'options': '--promp
 nmap <Leader>r :Rg<CR>
 nmap <Leader>l :Lines 
 nmap <Leader>v :Vista finder<CR>
-nmap <Leader>g :20G<CR> 
-nmap <Leader>gg :GFiles?<CR> 
+nmap <Leader>g :GFiles?<CR> 
+nmap <Leader>gg :20G<CR> 
 nmap <Leader>xx :VimuxPromptCommand<CR>
 nmap <silent> <Leader>sp :set spell!<CR>
 nmap K <Plug>(devdocs-under-cursor)
