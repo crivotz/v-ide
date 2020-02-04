@@ -41,8 +41,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-jdaddy'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -55,7 +53,6 @@ Plug 'benmills/vimux'
 Plug 'chaoren/vim-wordmotion'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'osyo-manga/vim-anzu'
@@ -63,28 +60,22 @@ Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'chrisbra/NrrwRgn'
 Plug 'dyng/ctrlsf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
-Plug 'dhruvasagar/vim-zoom'
-Plug 'rbong/vim-flog'
 Plug 'zinit-zsh/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'kkoomen/vim-doge'
 call plug#end()
 
 " =============================================================================
@@ -222,86 +213,7 @@ let g:fzf_colors =
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
 
-fu s:snr() abort
-    return matchstr(expand('<sfile>'), '.*\zs<SNR>\d\+_')
-endfu
-let s:snr = get(s:, 'snr', s:snr())
-let g:fzf_layout = {'window': 'call '..s:snr..'fzf_window(0.9, 0.6, "Comment")'}
-
-fu s:fzf_window(width, height, border_highlight) abort
-    let width = float2nr(&columns * a:width)
-    let height = float2nr(&lines * a:height)
-    let row = float2nr((&lines - height) / 2)
-    let col = float2nr((&columns - width) / 2)
-    let top = '┌' . repeat('─', width - 2) . '┐'
-    let mid = '│' . repeat(' ', width - 2) . '│'
-    let bot = '└' . repeat('─', width - 2) . '┘'
-    let border = [top] + repeat([mid], height - 2) + [bot]
-    if has('nvim')
-        let frame = s:create_float(a:border_highlight, {
-            \ 'row': row,
-            \ 'col': col,
-            \ 'width': width,
-            \ 'height': height,
-            \ })
-        call nvim_buf_set_lines(frame, 0, -1, v:true, border)
-        call s:create_float('Normal', {
-            \ 'row': row + 1,
-            \ 'col': col + 2,
-            \ 'width': width - 4,
-            \ 'height': height - 2,
-            \ })
-        exe 'au BufWipeout <buffer> bw '..frame
-    else
-        let frame = s:create_popup_window(a:border_highlight, {
-            \ 'line': row,
-            \ 'col': col,
-            \ 'width': width,
-            \ 'height': height,
-            \ 'is_frame': 1,
-            \ })
-        call setbufline(frame, 1, border)
-        call s:create_popup_window('Normal', {
-            \ 'line': row + 1,
-            \ 'col': col + 2,
-            \ 'width': width - 4,
-            \ 'height': height - 2,
-            \ })
-    endif
-endfu
-
-fu s:create_float(hl, opts) abort
-    let buf = nvim_create_buf(v:false, v:true)
-    let opts = extend({'relative': 'editor', 'style': 'minimal'}, a:opts)
-    let win = nvim_open_win(buf, v:true, opts)
-    call setwinvar(win, '&winhighlight', 'NormalFloat:'..a:hl)
-    return buf
-endfu
-
-fu s:create_popup_window(hl, opts) abort
-    if has_key(a:opts, 'is_frame')
-        let id = popup_create('', #{
-            \ line: a:opts.line,
-            \ col: a:opts.col,
-            \ minwidth: a:opts.width,
-            \ minheight: a:opts.height,
-            \ zindex: 50,
-            \ })
-        call setwinvar(id, '&wincolor', a:hl)
-        exe 'au BufWipeout * ++once call popup_close('..id..')'
-        return winbufnr(id)
-    else
-        let buf = term_start(&shell, #{hidden: 1})
-        call popup_create(buf, #{
-            \ line: a:opts.line,
-            \ col: a:opts.col,
-            \ minwidth: a:opts.width,
-            \ minheight: a:opts.height,
-            \ zindex: 51,
-            \ })
-        exe 'au BufWipeout * ++once bw! '..buf
-    endif
-endfu
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
 
 " =============================================================================
 " VIM-STARTIFY
@@ -334,7 +246,6 @@ let g:startify_custom_header = [
       \'     \__/           |__| |_______/ |_______|',
       \ ]
 let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': ["  Sessions"]       },
       \ { 'type': 'bookmarks', 'header': ["  Bookmarks"]      },
       \ { 'type': 'files',     'header': ["  MRU Files"]            },
       \ { 'type': 'dir',       'header': ["  MRU Files in ". getcwd()] },
@@ -404,8 +315,7 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename' ],
-      \             ['zoom'] ],
+      \             [ 'gitbranch', 'readonly', 'filename' ] ],
       \   'right':  [ ['lineinfo'],
       \             [ 'linenoindicator' ],
       \             [ 'rvm' ],
@@ -415,7 +325,6 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'Lightlinegit',
-      \   'zoom': 'Lightlinezoom',
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'rvm': 'rvm#statusline',
@@ -509,9 +418,6 @@ function! Lightlinegit()
   return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
-function! Lightlinezoom()
-  return zoom#statusline()
-endfunction
 
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
@@ -519,11 +425,6 @@ endfunction
 
 autocmd User CocDiagnosticChange call lightline#update()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
-
-" =============================================================================
-" VIM-ZOOM
-" =============================================================================
-let g:zoom#statustext = ' ZOOM'
 
 " =============================================================================
 " VIM-HEXOKINASE
@@ -642,7 +543,6 @@ let g:vista_fzf_preview = []
 "<F1> open help
 nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
-nmap <F4> :Goyo<CR>
 nmap <F5> :set list! list?<CR>
 nmap <silent> <F7> :Ranger<CR>
 nmap <F8> :Vista<CR>

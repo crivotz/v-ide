@@ -51,7 +51,6 @@ Thanks to the developers of these plugins/color schemes
 * [devdocs](https://github.com/rhysd/devdocs.vim): Open devdocs.io from Vim
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons.git): Adds file type glyphs/icons to popular Vim plugins
 * [vim-tmux-focus](https://github.com/tmux-plugins/vim-tmux-focus-events.git): Make terminal vim and tmux work better together
-* [NrrwRgn](https://github.com/chrisbra/NrrwRgn): A Narrow Region Plugin for Vim
 * [Ctrlsf](https://github.com/dyng/ctrlsf.vim): An ack.vim alternatives mimics Ctrl-Shift-F on Sublime Text 2  
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim  
 * [coc.nvim](https://github.com/neoclide/coc.nvim): Intellisense engine for vim8 & neovim, full language server protocol support as VSCode  
@@ -59,13 +58,9 @@ Thanks to the developers of these plugins/color schemes
 * [vim-hexokinase](https://github.com/RRethy/vim-hexokinase): Plugin for displaying the colours in the file.  
 * [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim.  
 * [vim-node](https://github.com/moll/vim-node): Tools and environment to make Vim superb for developing with Node.js. Like Rails.vim for Node  
-* [gist-vim](https://github.com/mattn/gist-vim): vimscript for gist  
-* [webapi-vim](https://github.com/mattn/webapi-vim): vim interface to Web API  
-* [vim-obsession](https://github.com/tpope/vim-obsession): continuosly update session files  
 * [vim-startify](https://github.com/mhinx/vim-startify): The fancy start screen for Vim  
 * [bclose](https://github.com/rbgrouleff/bclose.vim): The fancy start screen for Vim  
 * [notational-fzf-vim](https://github.com/alok/notation-fzf-vim): Notational velocity for vim  
-* [goyo](https://github.com/junegunn/goyo.vim): Distraction-free writing in Vim  
 * [auto-pairs](https://github.com/jiangmiao/auto-pairs): Vim plugin, insert or delete brackets, parens, quotes in pair  
 * [committia](https://github.com/rhysd/committia.vim): A vim plugin for more pleasant editing on commit messages  
 * [lightline.vim](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim  
@@ -73,12 +68,10 @@ Thanks to the developers of these plugins/color schemes
 * [zplugin-vim-syntax](https://github.com/zplugin/zplugin-vim-syntax): A Vim syntax definition for Zplugin commands in any ft=zsh file  
 * [vim-easy-align](https://github.com/junegunn/vim-easy-align): A Vim alignment plugin  
 * [vim-wordmotion](https://github.com/chaoren/vim-wordmotion): More useful word motions for Vim  
-* [vim-flog](https://github.com/rbong/vim-flog): A lightweight and powerful git branch viewer for vim.  
 * [vim-simple-todo](https://github.com/vitalk/vim-simple-todo): Mappings to manage GitHub-like task lists  
 * [drzel/vim-line-no-indicator](https://github.com/drzel/vim-line-no-indicator): Simple and expressive line number indicator  
 * [ranger.vim](https://github.com/francoiscabrol/ranger.vim): Ranger integration.  
 * [Vista](https://github.com/liuchengxu/vista.vim): Viewer & Finder for LSP symbols and tags  
-* [Vim-doge](https://github.com/kkoomen/vim-doge): Documentation Generator  
 
 **COLOR SCHEMES**
 
