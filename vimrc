@@ -41,6 +41,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-jdaddy'
+Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
@@ -132,7 +133,8 @@ set softtabstop=2
 set signcolumn=yes
 set shortmess+=c
 set noshowmode                            " Don't dispay mode in command line
-set nonumber                              " Row number
+set number                                " Row number
+set relativenumber                        " Relative number
 set hidden                                " allow hidden buffer
 set splitright                            " Open vertical splits to the right
 set splitbelow                            " Open horizontal splits to the bottom
@@ -179,13 +181,8 @@ hi! SignifySignAdd guibg=NONE
 hi! SignifySignDelete guibg=NONE
 hi! SignifySignChange guibg=NONE
 
-" =============================================================================
-" COMMENTED SETTINGS
-" =============================================================================
-" set textwidth=80 " use a different bground color after
-" execute "set colorcolumn=" . join(range(81,335), ',') " Highlight from column 81
-" set cursorcolumn " highlight the column the cursor is on
-" set cursorline " highlight the line the cursor is on
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
 
 " =============================================================================
 " RANGER
@@ -197,7 +194,6 @@ let g:ranger_command_override = 'ranger.py --cmd "set show_hidden=true"'
 " =============================================================================
 " FZF
 " =============================================================================
-" let g:fzf_commits_log_options = 'log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 let g:fzf_colors =
       \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
@@ -507,17 +503,17 @@ let g:devdocs_filetype_map = {
       \ }
 
 " =============================================================================
-" Vim-polyglot
+" VIM-POLYGLOT
 " =============================================================================
 let g:polyglot_disabled = []
 
 " ============================================================================
-" Vim-easymotion
+" VIM-EASYMOTION
 " =============================================================================
 let g:EasyMotion_smartcase = 1
 
 " ============================================================================
-" Vim-gutentags
+" VIM-GUTENTAGS
 " =============================================================================
 set tags+=tags,.git/tags
 let g:gutentags_enabled = 1
@@ -530,7 +526,7 @@ let g:gutentags_ctags_extra_args = ['--fields=+l']
 let g:gutentags_add_default_project_roots = 0
 
 " ============================================================================
-" Vista
+" VISTA
 " =============================================================================
 let g:vista#renderer#enable_icon = 1
 let g:vista#finders = ['fzf']
@@ -575,6 +571,6 @@ nmap # <Plug>(anzu-sharp-with-echo)
 nmap <C-F>f <Plug>CtrlSFPrompt
 vmap <C-F>f <Plug>CtrlSFVwordExec
 nmap <C-F>n <Plug>CtrlSFCwordExec
+nnoremap <C-F>t :CtrlSFToggle<CR>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-nnoremap <C-F>t :CtrlSFToggle<CR>
