@@ -77,6 +77,9 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'liuchengxu/vista.vim'
+Plug 'blueyed/vim-diminactive'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 call plug#end()
 
 " =============================================================================
@@ -210,6 +213,13 @@ let g:fzf_colors =
       \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
+
+" =============================================================================
+" VIM-DIMINACTIVE
+" =============================================================================
+let g:diminactive_enable_focus = 1
+let g:diminactive_use_colorcolumn = 1
+let g:diminactive_use_syntax = 0
 
 " =============================================================================
 " VIM-STARTIFY
