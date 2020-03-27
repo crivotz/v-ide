@@ -45,7 +45,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kshenoy/vim-signature'
 Plug 'yggdroot/indentline'
@@ -75,11 +75,12 @@ Plug 'zinit-zsh/zplugin-vim-syntax'
 Plug 'vitalk/vim-simple-todo'
 Plug 'arcticicestudio/nord-vim'
 Plug 'drzel/vim-line-no-indicator'
-Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
 Plug 'liuchengxu/vista.vim'
-Plug 'blueyed/vim-diminactive'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " =============================================================================
@@ -187,12 +188,15 @@ hi! SignifySignChange guibg=NONE
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 set cursorline
 
+" ============================================================================
+" VISTA
 " =============================================================================
-" RANGER
-" =============================================================================
-let g:ranger_map_keys = 0
-let g:ranger_replace_netrw = 1
-let g:ranger_command_override = 'ranger.py --cmd "set show_hidden=true"'
+let g:vista#renderer#enable_icon = 1
+let g:vista#finders = ['fzf']
+let g:vista_executive_for = {
+      \ 'ruby': 'coc',
+      \ }
+let g:vista_fzf_preview = []
 
 " =============================================================================
 " FZF
@@ -215,11 +219,9 @@ let g:fzf_colors =
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:false } }
 
 " =============================================================================
-" VIM-DIMINACTIVE
+" LENS
 " =============================================================================
-let g:diminactive_enable_focus = 1
-let g:diminactive_use_colorcolumn = 1
-let g:diminactive_use_syntax = 0
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 
 " =============================================================================
 " VIM-STARTIFY
@@ -360,6 +362,8 @@ function! LightlineMode()
   return &filetype ==# 'vista' ? 'VISTA' :
         \ &filetype ==# 'ctrlsf' ? 'CTRLSF' :
         \ &filetype ==# 'fugitive' ? 'FUGITIVE' :
+        \ &filetype ==# 'nerdtree' ? 'NERDTREE' :
+        \ &filetype ==# 'fzf' ? 'FZF' :
         \ lightline#mode()
 endfunction
 
@@ -517,9 +521,23 @@ let g:devdocs_filetype_map = {
 let g:polyglot_disabled = []
 
 " ============================================================================
-" VIM-EASYMOTION
+" VIM-SNEAK
 " =============================================================================
-let g:EasyMotion_smartcase = 1
+
+" case sensitivity
+let g:sneak#use_ic_scs = 1
+
+" clever repetition
+let g:sneak#s_next = 1
+let g:sneak#f_reset = 1
+let g:sneak#t_reset = 1
+" let g:sneak#absolute_dir = 1
+
+" target selection
+let g:sneak#label = 1
+let g:sneak#prompt = 'Sneak: '
+let g:sneak#label_esc = "\<CR>"
+let g:sneak#target_labels = 'aoeuidhtnspyfgcrlqjkxbmwvzAOEUIDHTNSPYFGCRLQJKXBMWVZ'
 
 " ============================================================================
 " VIM-GUTENTAGS
@@ -535,21 +553,17 @@ let g:gutentags_ctags_extra_args = ['--fields=+l']
 let g:gutentags_add_default_project_roots = 0
 
 " ============================================================================
-" VISTA
+" NERDTREE
 " =============================================================================
-let g:vista#renderer#enable_icon = 1
-let g:vista#finders = ['fzf']
-let g:vista_executive_for = {
-  \ 'ruby': 'coc',
-  \ }
-let g:vista_fzf_preview = []
+let NERDTreeShowBookmarks=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " =============================================================================
 "<F1> open help
 nnoremap <F2> :set invnumber<CR>
 nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F5> :set list! list?<CR>
-nmap <silent> <F7> :Ranger<CR>
+nmap <silent> <F7> :NERDTreeToggle<CR>
 nmap <F8> :Vista<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
 autocmd FileType json nmap <F10> :%!python -m json.tool<cr>
@@ -568,11 +582,6 @@ nmap <Leader>gg :20G<CR>
 nmap <Leader>xx :VimuxPromptCommand<CR>
 nmap <silent> <Leader>sp :set spell!<CR>
 nmap K <Plug>(devdocs-under-cursor)
-map <Leader> <Plug>(easymotion-prefix)
-nmap f <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 map  n <Plug>(anzu-n-with-echo)
 map  N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
