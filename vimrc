@@ -84,6 +84,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'wincent/scalpel'
 Plug 'AndrewRadev/tagalong.vim'
+Plug 'jmckiern/vim-venter'
+Plug 'svermeulen/vim-yoink'
 call plug#end()
 
 " =============================================================================
@@ -249,6 +251,7 @@ let g:startify_bookmarks = [
       \ {'d': '~/Dev'},
       \ {'w': '~/DevWeb'},
       \ {'c': '~/.vimrc'},
+      \ {'s': '~/.config/nvim/coc-settings.json'},
       \ {'z': '~/.zshrc'}
       \ ]
 let g:startify_custom_header = [
@@ -301,6 +304,14 @@ let g:SignatureMarkTextHLDynamic = 1
 let g:SignatureMarkerTextHLDynamic = 1
 
 " =============================================================================
+" VIM-YOINK
+" =============================================================================
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+" =============================================================================
 " COC
 " =============================================================================
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -318,12 +329,10 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-let g:coc_status_error_sign = '•'
-let g:coc_status_warning_sign = '•'
+let g:coc_status_error_sign = ' '
+let g:coc_status_warning_sign = ' '
 
 let g:coc_explorer_global_presets = {
-\   '.vim': {
-\   },
 \   'floating': {
 \      'position': 'floating',
 \   },
@@ -536,7 +545,7 @@ let g:vimrubocop_confi = '.rubocop.yml'
 " VIM-ROOTER
 " =============================================================================
 let g:rooter_silent_chdir = 1
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd = 'lcd'
 let g:rooter_resolve_links = 1
 let g:rooter_patterns = ['.git', '.git/']
 
@@ -596,9 +605,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "<F1> open help
 nnoremap <F3> :set number! relativenumber!<CR>
 nmap <F4> :set list! list?<CR>
-nmap <silent><F7> :CocCommand explorer --preset .vim<CR>
+nmap <silent><F7> :CocCommand explorer --width 80<CR>
 nmap <silent><F6> :CocCommand explorer --preset floating<CR>
 nmap <F8> :Vista<CR>
+nmap <F9> :VenterToggle<CR>
 autocmd FileType ruby nmap <F10> :call RunWith("ruby")<cr>
 autocmd FileType json nmap <F10> :%!python -m json.tool<cr>
 nmap <Leader>bda :bd <C-a> <CR>
