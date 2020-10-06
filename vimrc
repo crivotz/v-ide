@@ -70,7 +70,6 @@ Plug 'honza/vim-snippets'
 Plug 'RRethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'sheerun/vim-polyglot'
 Plug 'moll/vim-node'
-Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'alok/notational-fzf-vim'
