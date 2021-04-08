@@ -109,4 +109,4 @@ vim
 * [benwainwright/fzf-project](https://github.com/benwainwright/fzf-project): A vim plugin to make project switching easier using fzf.vim  
 * [kovetskiy/vim-autoresize](https://github.com/kovetskiy/vim-autoresize): The dead-simple autoresize plugin for Vim.  
 * [andymass/vim-matchup](https://github.com/andymass/vim-matchup): vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen replacement  
-* [gruvbox-community/gruvbox](https://github.com/gruvbox-community/gruvbox): Retro groove color scheme for Vim - community maintained edition  
+* [sainnhe/gruvbox-material](https://github.com/sainnhe/gruvbox-material): Gruvbox with Material Palette  

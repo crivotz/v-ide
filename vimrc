@@ -99,7 +99,7 @@ Plug 'andymass/vim-matchup'
 " =============================================================================
 " COLORSCHEME
 " =============================================================================
-Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 " =============================================================================
@@ -115,7 +115,7 @@ if exists('+termguicolors')
 endif
 let g:gruvbox_italic=1
 set bg=dark
-color gruvbox
+color gruvbox-material
 
 " =============================================================================
 " CHECK OS
@@ -391,7 +391,7 @@ let g:coc_explorer_global_presets = {
 let g:lightline#bufferline#show_number  = 1
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename' ] ],
@@ -454,7 +454,6 @@ function! LightlineFilename()
     return path[len(root)+1:] . modified
   endif
   return expand('%') . modified
-endif
 endfunction
 
 function! LightLineReadonly()
