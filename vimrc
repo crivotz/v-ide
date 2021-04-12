@@ -114,6 +114,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 let g:gruvbox_material_enable_italic=1
+let g:gruvbox_material_sign_column_background = 'none'
 set bg=dark
 color gruvbox-material
 
