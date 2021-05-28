@@ -652,7 +652,7 @@ nmap                       <Leader>bp :bp<CR>
 nmap                       <Leader>bb :Buffers<CR>
 nmap                       <Leader>nm :Dispatch npm start<CR>
 nmap                       <Leader>nv :NV<CR>
-nmap      <silent>         <Leader>p :call fzf#vim#files('', fzf#vim#with_preview({'options': '--prompt "λ -> "'}))<CR>
+nmap      <silent>         <Leader>f :call fzf#vim#files('', fzf#vim#with_preview({'options': '--prompt "λ -> "'}))<CR>
 nmap                       <Leader>r :Rg<CR>
 nmap                       <Leader>tt :Rg TODO:<CR>
 nmap                       <Leader>l :Lines<CR>
