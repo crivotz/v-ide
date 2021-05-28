@@ -72,7 +72,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'rhysd/committia.vim'
 Plug 'rhysd/devdocs.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'dyng/ctrlsf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
