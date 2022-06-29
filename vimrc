@@ -324,7 +324,7 @@ let g:ctrlsf_auto_focus = {
 " =============================================================================
 " NOTATIONAL VIM
 " =============================================================================
-let g:nv_search_paths = ['~/Note']
+let g:nv_search_paths = ['~/Notes']
 
 " =============================================================================
 " NETRW
@@ -493,7 +493,7 @@ function! LightLineCocWarn() abort
 endfunction
 
 function! Lightlinegit()
-  let l:branch = fugitive#head()
+  let l:branch = FugitiveHead()
   return l:branch ==# '' ? '' : ' ' . l:branch
 endfunction
 
